@@ -29,9 +29,9 @@ public class AnotacaoDao {
 			stmt.setLong(2, anotacao.getIdUser());
 			stmt.setString(3, anotacao.getTitulo());
 			stmt.setString(4, anotacao.getConteudo());
-			stmt.setDate(5, (Date) anotacao.getLembrete());
-			stmt.setDate(6, (Date) anotacao.getDataCricacao());
-			stmt.setDate(7, (Date) anotacao.getUltimaModificacao());
+			stmt.setDate(5, anotacao.getLembrete() != null ? new Date (anotacao.getLembrete().getTime()) : null);
+			stmt.setDate(6, new Date(anotacao.getDataCricacao().getTime()));
+			stmt.setDate(7, new Date(anotacao.getUltimaModificacao().getTime()));
 			stmt.setString(8, anotacao.getCor());
 			stmt.setLong(9, anotacao.getIdMarcacao());
 			

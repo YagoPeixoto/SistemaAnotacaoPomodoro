@@ -18,7 +18,7 @@ public class PomodoroDao {
 	
 	public void adiciona(Pomodoro pomodoro){
 		
-		String sql = "INSERT INTO Marcador " + "(idPomodoro, idUsuario, idAnotacao, dataInicio, dataFim)" + " VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO pomodoro " + "(idPomodoro, idUsuario, idAnotacao, dataInicio, dataFim)" + " VALUES (?,?,?,?,?)";
 		 
 	
 		try{
@@ -27,9 +27,9 @@ public class PomodoroDao {
 
 			stmt.setLong(1, pomodoro.getIdPomodoro());
 			stmt.setLong(2, pomodoro.getIdUsuario());
-			stmt.setDate(3, (Date) pomodoro.getDataInicio());
-			stmt.setDate(4, (Date) pomodoro.getDataFim());
-		
+			stmt.setLong(3, pomodoro.getIdAnotacao());
+			stmt.setDate(4, new Date (pomodoro.getDataInicio().getTime()));
+			stmt.setDate(5, new Date (pomodoro.getDataFim().getTime()));
 			
 			stmt.execute();
 			stmt.close();
