@@ -1,9 +1,6 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 import connection.ConnectionFactory;
 import model.Usuario;
@@ -18,7 +15,7 @@ public class UsuarioDao {
 	
 	public void adiciona(Usuario usuario){
 		
-		String sql = "INSERT INTO Anotacao " + "(idUsuario, nome,sobreNome,dataNascimento,usuarioID,"
+		String sql = "INSERT INTO usuario " + "(idUsuario, nome,sobreNome,dataNascimento,usuarioID,"
 				+ "tempoPomodoro,tempoDescanco,tempoDescancoLongo,sessoesTrabalho)" + " VALUES (?,?,?,?,?,?,?,?,?)";
 		
 	
@@ -29,7 +26,7 @@ public class UsuarioDao {
 			stmt.setLong(1, usuario.getIdUsuario());
 			stmt.setNString(2, usuario.getNome());
 			stmt.setString(3, usuario.getSobreNome());
-			stmt.setDate(4, (Date) usuario.getDataNascimento());
+			stmt.setDate(4, (new Date(usuario.getDataNascimento().getTime())));
 			stmt.setString(5, usuario.getUsuarioID());
 			stmt.setLong(6, usuario.getTempoPomodoro());
 			stmt.setLong(7, usuario.getTempoDescanco());

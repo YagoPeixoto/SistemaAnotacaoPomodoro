@@ -86,6 +86,6 @@ public class Usuario {
 		this.sessoesTrabalho = sessoesTrabalho;
 	}
 
-	
+
 
 }
